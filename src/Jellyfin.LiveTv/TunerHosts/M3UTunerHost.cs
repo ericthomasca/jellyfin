@@ -164,6 +164,18 @@ namespace Jellyfin.LiveTv.TunerHosts
                 httpHeaders[HeaderNames.UserAgent] = string.IsNullOrWhiteSpace(info.UserAgent) ?
                     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" :
                     info.UserAgent;
+
+                // Add Referer header, only for HTTP protocol
+                if (!string.IsNullOrWhiteSpace(info.Referer))
+                {
+                    httpHeaders[HeaderNames.Referer] = info.Referer;
+                }
+
+                // Add Origin header, only for HTTP protocol
+                if (!string.IsNullOrWhiteSpace(info.Origin))
+                {
+                    httpHeaders[HeaderNames.Origin] = info.Origin;
+                }
             }
 
             var mediaSource = new MediaSourceInfo

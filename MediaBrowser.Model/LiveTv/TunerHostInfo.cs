@@ -42,6 +42,10 @@ namespace MediaBrowser.Model.LiveTv
 
         public string UserAgent { get; set; }
 
+        public string Referer { get; set; }
+
+        public string Origin { get; set; }
+
         public bool IgnoreDts { get; set; }
     }
 }
